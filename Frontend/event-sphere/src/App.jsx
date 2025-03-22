@@ -9,21 +9,28 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import NewEvent from './pages/NewEvent';
 import EventDetail from './pages/EventDetail';
-
-// Components
+import EventTypeSelector from './components/Template/EventTypeSelector'; // Added new page
+import EventTemplateSelector from './components/Template/EventTemplateSelector'; // Added new page
+import CustomTemplate from './components/Template/CustomTemplate'; // Added new page
 import PrivateRoute from './components/PrivateRoute';
-
+// Components
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/events/:id" element={<EventDetail />} />
 
-          {/* Protected routes */}
+          {/* Event Creation Routes */}
+          <Route path="/create-event" element={<EventTypeSelector />} /> {/* Event Type Selection */}
+          <Route path="/create-event/:eventType" element={<EventTemplateSelector />} /> {/* Template Selector */}
+          <Route path="/create-event/custom" element={<CustomTemplate />} /> {/* Custom Template */}
+
+          {/* Protected Routes */}
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/new-event" element={<NewEvent />} />
