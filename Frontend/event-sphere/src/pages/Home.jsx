@@ -1,155 +1,155 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Layout from "../components/Layout";
-import EventList from "../components/EventList";
-import EventService from "../services/event.service";
-// import { useAuth } from '../contexts/AuthContext';
+// import React, { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
+// import Layout from "../components/Layout";
+// import EventList from "../components/EventList";
+// import EventService from "../services/event.service";
+// // import { useAuth } from '../contexts/AuthContext';
 
-const Home = () => {
-  const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  // const { isAuthenticated } = useAuth();
+// const Home = () => {
+//   const [events, setEvents] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   // const { isAuthenticated } = useAuth();
 
  
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const data = await EventService.getAllEvents();
-        setEvents(data);
-      } catch (err) {
-        setError("Failed to load events. Please try again later.");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+//   useEffect(() => {
+//     const fetchEvents = async () => {
+//       try {
+//         const data = await EventService.getAllEvents();
+//         setEvents(data);
+//       } catch (err) {
+//         setError("Failed to load events. Please try again later.");
+//         console.error(err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
 
-    fetchEvents();
-  }, []);
+//     fetchEvents();
+//   }, []);
 
-  return (
-    <Layout>
-      {/* Dark navigation bar */}
-      <div className="bg-gray-900 rounded-full mb-12 px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center">
-          <span className="font-bold text-white text-xl p-2">Event</span>
-          <div className="bg-white p-1 rounded-full mr-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-gray-300"></div>
-          </div>
-        </div>
+//   return (
+//     <Layout>
+//       {/* Dark navigation bar */}
+//       <div className="bg-gray-900 rounded-full mb-12 px-4 py-3 flex justify-between items-center">
+//         <div className="flex items-center">
+//           <span className="font-bold text-white text-xl p-2">Event</span>
+//           <div className="bg-white p-1 rounded-full mr-2">
+//             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-gray-300"></div>
+//           </div>
+//         </div>
 
-        <div className="flex items-center space-x-8">
-          <a href="#benefits" className="text-white hover:text-gray-300">
-            Home
-          </a>
-          <Link to="/dashboard" className="text-white hover:text-gray-300">
-            Dashboard
-          </Link>
-          {/* <a href="#testimonials" className="text-white hover:text-gray-300">
-            Testimonials
-          </a> */}
-        </div>
-        <div className="flex gap-3">
-          <Link
-            to="/login"
-            className="bg-blue-200  px-5 py-2 rounded-full text-gray-800 font-medium hover:bg-gray-100 transition"
-          >
-            Login
-          </Link>
-          <Link
-            to="/signup"
-            className="bg-white px-5 py-2 rounded-full text-gray-800 font-medium hover:bg-red-300 transition"
-          >
-            Sign Up
-          </Link>
-        </div>
-      </div>
+//         <div className="flex items-center space-x-8">
+//           <a href="#benefits" className="text-white hover:text-gray-300">
+//             Home
+//           </a>
+//           <Link to="/dashboard" className="text-white hover:text-gray-300">
+//             Dashboard
+//           </Link>
+//           {/* <a href="#testimonials" className="text-white hover:text-gray-300">
+//             Testimonials
+//           </a> */}
+//         </div>
+//         <div className="flex gap-3">
+//           <Link
+//             to="/login"
+//             className="bg-blue-200  px-5 py-2 rounded-full text-gray-800 font-medium hover:bg-gray-100 transition"
+//           >
+//             Login
+//           </Link>
+//           <Link
+//             to="/signup"
+//             className="bg-white px-5 py-2 rounded-full text-gray-800 font-medium hover:bg-red-300 transition"
+//           >
+//             Sign Up
+//           </Link>
+//         </div>
+//       </div>
 
-      {/* Hero Section */}
-      <div className="text-center mb-12 relative">
-        {/* Join members button */}
-        <div className="inline-flex items-center px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm mb-8">
-          <div className="flex -space-x-2 mr-2">
-            <img
-              src="https://imgs.search.brave.com/x7U9K2GljUZpBUO6JyymD-wsNb_N_YPF6SYfBRG2OkE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS82/M2ZkY2JlNDhhYTAy/MGMwYTU0OTM1MDcv/NjU2YjNjZTRkNWIy/ZDBmYThhZjRjYTJk/XzIwLndlYnA"
-              alt="Member"
-              className="w-8 h-8 rounded-full border-2 border-white"
-            />
-            <img
-              src="https://imgs.search.brave.com/_LdDFKfR6WUAH-b8UYA-27jRCWi0BPwgPi7TFSsvIAw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS82/M2ZkY2JlNDhhYTAy/MGMwYTU0OTM1MDcv/NjU2YjNjZDQwM2Rl/MTg3MWQyZDQyNmNi/XzA3LndlYnA"
-              alt="Member"
-              className="w-8 h-8 rounded-full border-2 border-white"
-            />
-            <img
-              src="https://imgs.search.brave.com/8DrQF7aeyxM7JLR1vSDuyd2xinlvJ15EMNW5ceraM8M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS82/M2ZkY2JlNDhhYTAy/MGMwYTU0OTM1MDcv/NjU2YjNjY2Y3ZGI3/ODAzMWNhN2M0YzJk/XzAxLndlYnA"
-              alt="Member"
-              className="w-8 h-8 rounded-full border-2 border-white"
-            />
-          </div>
-          <span className="text-gray-700">Join 1000+ Members</span>
-        </div>
+//       {/* Hero Section */}
+//       <div className="text-center mb-12 relative">
+//         {/* Join members button */}
+//         <div className="inline-flex items-center px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm mb-8">
+//           <div className="flex -space-x-2 mr-2">
+//             <img
+//               src="https://imgs.search.brave.com/x7U9K2GljUZpBUO6JyymD-wsNb_N_YPF6SYfBRG2OkE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS82/M2ZkY2JlNDhhYTAy/MGMwYTU0OTM1MDcv/NjU2YjNjZTRkNWIy/ZDBmYThhZjRjYTJk/XzIwLndlYnA"
+//               alt="Member"
+//               className="w-8 h-8 rounded-full border-2 border-white"
+//             />
+//             <img
+//               src="https://imgs.search.brave.com/_LdDFKfR6WUAH-b8UYA-27jRCWi0BPwgPi7TFSsvIAw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS82/M2ZkY2JlNDhhYTAy/MGMwYTU0OTM1MDcv/NjU2YjNjZDQwM2Rl/MTg3MWQyZDQyNmNi/XzA3LndlYnA"
+//               alt="Member"
+//               className="w-8 h-8 rounded-full border-2 border-white"
+//             />
+//             <img
+//               src="https://imgs.search.brave.com/8DrQF7aeyxM7JLR1vSDuyd2xinlvJ15EMNW5ceraM8M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS82/M2ZkY2JlNDhhYTAy/MGMwYTU0OTM1MDcv/NjU2YjNjY2Y3ZGI3/ODAzMWNhN2M0YzJk/XzAxLndlYnA"
+//               alt="Member"
+//               className="w-8 h-8 rounded-full border-2 border-white"
+//             />
+//           </div>
+//           <span className="text-gray-700">Join 1000+ Members</span>
+//         </div>
 
-        <h1 className="text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto">
-          Organize, Manage, and Discover Events Seamlessly with Our Platform
-        </h1>
+//         <h1 className="text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto">
+//           Organize, Manage, and Discover Events Seamlessly with Our Platform
+//         </h1>
 
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
-          Empower Event Organizers and Attendees with Advanced Tools for
-          Effortless Event Creation, RSVP Tracking, and Real-Time Notifications.
-        </p>
+//         <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+//           Empower Event Organizers and Attendees with Advanced Tools for
+//           Effortless Event Creation, RSVP Tracking, and Real-Time Notifications.
+//         </p>
 
-        {/* Join Waitlist Button with Arrow */}
-        <div className="flex justify-center items-center relative">
-          <Link
-            to="/new-event"
-            className="px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white font-medium rounded-full shadow-lg hover:shadow-xl transition"
-          >
-            {/* Using your link to create new events instead of waitlist */}
-            Create an Event
-          </Link>
-        </div>
+//         {/* Join Waitlist Button with Arrow */}
+//         <div className="flex justify-center items-center relative">
+//           <Link
+//             to="/new-event"
+//             className="px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white font-medium rounded-full shadow-lg hover:shadow-xl transition"
+//           >
+//             {/* Using your link to create new events instead of waitlist */}
+//             Create an Event
+//           </Link>
+//         </div>
 
-        {/* Info text */}
-        <div className="flex justify-center items-center mt-8 text-gray-500 text-sm">
-          <svg
-            className="w-4 h-4 mr-1"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
-            <path
-              d="M12 8V12M12 16H12.01"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-          <span>Synchronization Across Devices Included.</span>
-        </div>
-      </div>
+//         {/* Info text */}
+//         <div className="flex justify-center items-center mt-8 text-gray-500 text-sm">
+//           <svg
+//             className="w-4 h-4 mr-1"
+//             viewBox="0 0 24 24"
+//             fill="none"
+//             xmlns="http://www.w3.org/2000/svg"
+//           >
+//             <circle
+//               cx="12"
+//               cy="12"
+//               r="10"
+//               stroke="currentColor"
+//               strokeWidth="2"
+//             />
+//             <path
+//               d="M12 8V12M12 16H12.01"
+//               stroke="currentColor"
+//               strokeWidth="2"
+//               strokeLinecap="round"
+//             />
+//           </svg>
+//           <span>Synchronization Across Devices Included.</span>
+//         </div>
+//       </div>
 
-      {/* Events Section - Integration from your original code */}
-      <section>
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold text-gray-800">Upcoming Events</h2>
-        </div>
-        <div className="">
-          <EventList events={events} loading={loading} error={error} />
-        </div>
-      </section>
-    </Layout>
-  );
-};
+//       {/* Events Section - Integration from your original code */}
+//       <section>
+//         <div className="flex justify-between items-center mb-8">
+//           <h2 className="text-2xl font-bold text-gray-800">Upcoming Events</h2>
+//         </div>
+//         <div className="">
+//           <EventList events={events} loading={loading} error={error} />
+//         </div>
+//       </section>
+//     </Layout>
+//   );
+// };
 
-export default Home;
+// export default Home;
 // import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 // import Layout from "../components/Layout";
@@ -386,3 +386,114 @@ export default Home;
 // };
 
 // export default Home;
+
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Layout from "../components/Layout";
+import EventList from "../components/EventList";
+import EventService from "../services/event.service";
+
+const Home = () => {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const data = await EventService.getAllEvents();
+        setEvents(data);
+      } catch (err) {
+        setError("Failed to load events. Please try again later.");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  return (
+    <Layout>
+      {/* 🔹 Navigation Bar */}
+      <nav className="bg-[#05445e] rounded-full mb-12 px-6 py-4 flex justify-between items-center shadow-lg">
+        <div className="flex items-center space-x-4">
+          <span className="font-bold text-white text-xl">EventCatcher</span>
+          <div className="bg-white p-1 rounded-full shadow-md">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#189ab4] to-[#75e6da]"></div>
+          </div>
+        </div>
+
+        <div className="flex space-x-8">
+          <a href="#benefits" className="text-white hover:text-gray-300 transition">Home</a>
+          <Link to="/dashboard" className="text-white hover:text-gray-300 transition">Dashboard</Link>
+        </div>
+
+        <div className="flex gap-4">
+          <Link
+            to="/login"
+            className="bg-[#189ab4] px-5 py-2 rounded-full text-white font-medium hover:bg-[#75e6da] transition"
+          >
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="bg-white px-5 py-2 rounded-full text-gray-800 font-medium hover:bg-[#d4f1f4] transition"
+          >
+            Sign Up
+          </Link>
+        </div>
+      </nav>
+
+      {/* 🔹 Hero Section */}
+      <div className="text-center mb-16 relative">
+        {/* 🔹 Members Section */}
+        <div className="inline-flex items-center px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm mb-8">
+          <span className="text-gray-700 font-medium">Join 1000+ Members</span>
+        </div>
+
+        {/* 🔹 Headline */}
+        <h1 className="text-5xl font-bold text-gray-900 mb-6 max-w-4xl mx-auto leading-tight">
+          Organize, Manage, and <span className="bg-gradient-to-r from-[#189ab4] to-[#75e6da] text-transparent bg-clip-text">
+            Discover Events
+          </span> Seamlessly
+        </h1>
+
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+          Empower event organizers and attendees with tools for effortless event creation, RSVP tracking, and real-time notifications.
+        </p>
+
+        {/* 🔹 CTA Button */}
+        <div className="flex justify-center">
+          <Link
+            to="/new-event"
+            className="px-6 py-3 bg-gradient-to-r from-[#189ab4] to-[#75e6da] text-white font-medium rounded-full shadow-lg hover:scale-105 transition transform"
+          >
+            Create an Event
+          </Link>
+        </div>
+
+        {/* 🔹 Info text */}
+        <div className="flex justify-center items-center mt-8 text-gray-500 text-sm">
+          <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+            <path d="M12 8V12M12 16H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+          <span>Synchronization Across Devices Included.</span>
+        </div>
+      </div>
+
+      {/* 🔹 Events Section */}
+      <section className="bg-white p-6 rounded-2xl shadow-[10px_10px_0px_#b0d9e8] border border-[#189ab4]">
+        <div className="flex justify-between items-center mb-8">
+        <h2 className="text-3xl font-extrabold text-[#05445e] mb-6 border-b-4 border-[#189ab4] pb-2">Upcoming Events</h2>
+        </div>
+
+        <EventList events={events} loading={loading} error={error} />
+      </section>
+    </Layout>
+  );
+};
+
+export default Home;

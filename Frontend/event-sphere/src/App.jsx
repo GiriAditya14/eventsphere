@@ -13,6 +13,7 @@ import EventTypeSelector from './components/Template/EventTypeSelector'; // Adde
 import EventTemplateSelector from './components/Template/EventTemplateSelector'; // Added new page
 import CustomTemplate from './components/Template/CustomTemplate'; // Added new page
 import PrivateRoute from './components/PrivateRoute';
+import Userpage from "./pages/Userpage";
 // Components
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          {/* byme */}
+          <Route path="/userpage" element={<Userpage/>} />
+
           <Route path="/events/:id" element={<EventDetail />} />
 
           {/* Event Creation Routes */}
